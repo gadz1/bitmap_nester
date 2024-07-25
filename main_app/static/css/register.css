@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: white; /* Medium red background color */
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+form {
+    background-color: #cc0000; /* Dark red form background color */
+    padding: 40px; /* Increased padding for a larger form */
+    border-radius: 12px; /* Larger border-radius for rounded corners */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Slightly increased box shadow */
+    max-width: 500px; /* Increased max-width */
+    width: 100%;
+}
+
+label {
+    display: block;
+    margin-bottom: 12px; /* Increased margin */
+    color: #fff; /* White label text color */
+}
+
+input {
+    width: 100%;
+    padding: 12px; /* Increased padding */
+    margin-bottom: 20px; /* Increased margin */
+    box-sizing: border-box;
+    border: 1px solid #990000; /* Darker border color */
+    border-radius: 6px; /* Slightly increased border-radius */
+}
+
+button {
+    background-color: #990000; /* Darker red button background color */
+    color: #fff;
+    padding: 14px 20px; /* Increased padding */
+    border: none;
+    border-radius: 6px; /* Slightly increased border-radius */
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #770000; /* Darker red on hover */
+}
