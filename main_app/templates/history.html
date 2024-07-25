@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <!-- Meta setup -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    
+    
+    <title>Welcome</title>
+    <link rel="icon" href="{% static 'images/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+
+<header class="header-area">
+    <div class="container">
+        <div class="header-item">
+            <div class="header-item-inner">
+                <a href="#"><img src="{% static 'images/logo.svg' %}" alt=""></a>
+            </div>
+            <div class="header-item-inner2 d-none d-md-block">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">History</a></li>
+                    <li><a href="#">Tutorial</a></li>
+                </ul>
+            </div>  
+            <div class="header-item-inner3 d-none d-md-block">
+                <ul>
+                    <li><a href="/">Login</a></li>
+                    <li><a href="/register.html">Sign Up</a></li>
+                </ul>
+            </div>  
+        </div>
+    </div>
+</header>    
+
+<body>
+
+    <style>
+        .table{
+            margin-top: 10%;
+            margin-bottom: 10%;
+            
+        }
+        .table td, .table-container th {padding: 10px;}
+        .table td{border: 1px solid #000;}
+        .table img {
+            max-width: 250px; /* Set maximum width */
+            max-height: 250px; /* Set maximum height */
+        }
+        canvas {border: 1px solid #000;}
+        </style>
+
+        <div class="table">
+            <h1>History</h1>
+            <table>
+                <thead>
+                    <tr>
+                        <th>result</th>
+                        <th>date</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for item in items %}
+                        <tr>
+                            <td><img src="{{ item.result.url }}"></td>
+                            <td>{{item.date}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+</body>

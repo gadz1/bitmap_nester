@@ -1,0 +1,168 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <!-- Meta setup -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    
+    <title>Welcome</title>
+    <link rel="icon" href="{% static 'images/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+
+<body>
+    <!-- header-area start -->
+    <header class="header-area">
+        <div class="container">
+            <div class="header-item">
+                <div class="header-item-inner">
+                    <a href="#"><img src="{% static 'images/logo.svg' %}" alt=""></a>
+                </div>
+                <div class="header-item-inner2 d-none d-md-block">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="/history.html">History</a></li>
+                        <li><a href="#">Tutorial</a></li>
+                    </ul>
+                </div>  
+                <div class="header-item-inner3 d-none d-md-block">
+                    <ul>
+                        <li><a href="/">Login</a></li>
+                        <li><a href="/register.html">Sign Up</a></li>
+                    </ul>
+                </div>  
+                <div class="header-item-inner4 d-md-none" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>                      
+            </div>                  
+        </div>
+    </header>   
+    <!-- header-area end -->
+
+    <!-- upload-area start -->   
+    <section class="upload-area">
+        <div class="container">
+            <div class="upload-item">
+                <div class="upload-item-inner2">
+                    <img src="{% static 'images/upload-02.svg' %}" alt="">
+                    <h2>Drag & Drop or <span>choose the file</span></h2>
+                    <p>choose jpeg,png or SVG</p>    
+                </div>
+
+                <!--create dynamic table for input images-->
+                <style>
+                .table{
+                    margin-top: 10%;
+                    margin-bottom: 10%;
+                    
+                }
+                .table td, .table-container th {padding: 10px;}
+                .table td{border: 1px solid #000;}
+                .table img {
+                    max-width: 250px; /* Set maximum width */
+                    max-height: 250px; /* Set maximum height */
+                }
+                canvas {border: 1px solid #000;}
+                /* Style for the buttons */
+                .button {
+                    padding: 8px 12px;
+                    font-size: 14px;
+                    border: none;
+                    cursor: pointer;
+                    background-color: #007bff; /* Blue color */
+                    color: white;
+                    border-radius: 4px;
+                }
+
+                /* Style for the buttons on hover */
+                .button:hover {
+                    background-color: #0056b3; /* Darker blue color */
+                }
+
+                /* Style for the delete button */
+                .delete-button {
+                    padding: 8px 12px;
+                    font-size: 14px;
+                    border: none;
+                    cursor: pointer;
+                    background-color: #dc3545; /* Red color */
+                    color: white;
+                    border-radius: 4px;
+                }
+
+                /* Style for the delete button on hover */
+                .delete-button:hover {
+                    background-color: #c82333; /* Darker red color */
+                }
+
+                </style>
+
+                <div class="table">
+                    {% if items %}
+                    <h1>Items</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>SVG</th>
+                                <th>Count</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            {% for item in items %}
+                                <tr>
+                                    <td><img src="{{ item.input_image.url }}"></td>
+                                  
+                                    <td>
+                                        <button class="button" onclick="incrementCount('{{ item.id }}')">+</button>
+                                        <span id="count_{{ item.id }}">0</span>
+                                        <button class="button" onclick="decrementCount('{{ item.id }}')">-</button>
+                                    </td>
+                                 
+                                    <td>
+                                        <a href="{% url 'delete-item' item.id %}">
+                                            <button class="delete-button">Delete</button>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% endif %}
+                </div>
+
+                
+                <!-- annotation board -->
+                <div class="upload-item-inner6">
+                    <canvas id="canvas" width="500" height="500"></canvas>
+                   
+                    <form class="form-upload" method="post" enctype="multipart/form-data" action="{% url 'upload_image_view' %}">
+                        {% csrf_token %}
+                        <input id="file-upload" type="file" name="file-upload" />
+                        <label class="choose-file" for="file-upload">Choose File</label>
+                        <button onclick="showstr()" class="polygon-btn" type="submit" >insert polygon</button>
+                    </form>
+                </div>
+
+                <div class="upload-item-inner6">
+                    <form action="/hyper.html">
+                    <ul>
+                        <li>
+                            
+                            <button><img id="img-button" src="{% static 'images/upload-06.svg' %}"> <span>Start Nesting</span> </button>
+                        </li>
+                    </ul>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <script src="{% static 'js/draw.js' %}"></script>
+</body>

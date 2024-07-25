@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <!-- Meta setup -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    
+    
+    <title>Welcome</title>
+    <link rel="icon" href="{% static 'images/favicon.png' %}">
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+</head>
+
+<header class="header-area">
+    <div class="container">
+        <div class="header-item">
+            <div class="header-item-inner">
+                <a href="#"><img src="{% static 'images/logo.svg' %}" alt=""></a>
+            </div>
+            <div class="header-item-inner2 d-none d-md-block">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">History</a></li>
+                    <li><a href="#">Tutorial</a></li>
+                </ul>
+            </div>  
+            <div class="header-item-inner3 d-none d-md-block">
+                <ul>
+                    <li><a href="/">Login</a></li>
+                    <li><a href="/register.html">Sign Up</a></li>
+                </ul>
+            </div>  
+        </div>
+    </div>
+</header>    
+
+<body>
+
+    <style>
+        .table{
+            margin-top: 10%;
+            margin-bottom: 10%;
+            
+        }
+        .table td, .table-container th {padding: 10px;}
+        .table td{border: 1px solid #000;}
+        .table img {
+            max-width: 250px; /* Set maximum width */
+            max-height: 250px; /* Set maximum height */
+        }
+        .small-textbox {
+            width: 50px;
+        }
+        .submit-button {
+            background-color: #ce3f3f; /* Green */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .submit-button:hover {
+            background-color: #ff2600;
+        }
+        canvas {border: 1px solid #000;}
+        </style>
+
+        <div class="table">
+            <form method="POST">
+                {% csrf_token %} 
+                <label for="number1">bin width:</label>
+                <input type="text"  name="width" class="small-textbox" maxlength="3" pattern="\d{3}" required>
+                <br><br>
+                <label for="number2">bin height:</label>
+                <input type="text" name="height" class="small-textbox" maxlength="3" pattern="\d{3}" required>
+                <br><br>
+                <label for="gen">generations</label>
+                <input type="text" name="gen" class="small-textbox">
+                <br><br>
+                <label for="size">population size</label>
+                <input type="text" name="size" class="small-textbox">
+                <br><br>
+                <a href="/result.html">
+                    <button type="submit" class="submit-button">Submit</button>
+                </a>
+            </form>
+        </div>
+</body>
