@@ -6,4 +6,5 @@ This Django application is designed to process bitmap images of objects, segment
 - **Shapely**: Library for manipulation and analysis of planar geometric objects.
 - **SVGPathTools**: Library for working with SVG paths, used in converting shapes to coordinates.
 
-<span style="color: red;">Note: the project is incomplete as it lacks a feature to detect object sizes related to a coin.</span>
+**Note:** The project is incomplete as it lacks a feature to detect object sizes related to a coin.
+
